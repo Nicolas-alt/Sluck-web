@@ -52,7 +52,6 @@ const AuthProvider = ({ children }) => {
         'POST'
       );
 
-      console.log(response);
       if (response.token) {
         localStorage.setItem('tokenSluck', response.token);
 
