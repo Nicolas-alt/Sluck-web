@@ -1,24 +1,60 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/mainForms.css';
+import { AuthContext } from '../auth/AuthProvider';
 import CustomHelmet from '../components/CustomHelmet';
+import '../assets/styles/mainForms.css';
 
 const Register = () => {
+  const { register } = useContext(AuthContext);
+
+  const [form, setForm] = useState({
+    userName: 'Federico',
+    email: 'test7@gmail.com',
+    password: 'test',
+  });
+
+  const handleInputChange = ({ target }) => {
+    const { name, value } = target;
+
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const allReady = () =>
+    form.userName.length > 0 &&
+    form.password.length > 0 &&
+    form.email.length > 0
+      ? true
+      : false;
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { userName, email, password } = form;
+    const ok = await register(userName, email, password);
+  };
+
   return (
     <>
       <CustomHelmet title="Register" />
       <div className="limiter">
         <div className="container-login100">
           <div className="wrap-login100 p-t-50 p-b-90">
-            <form className="login100-form validate-form flex-sb flex-w">
+            <form
+              className="login100-form validate-form flex-sb flex-w"
+              onSubmit={onSubmit}
+            >
               <span className="login100-form-title mb-3">Chat - Registro</span>
 
               <div className="wrap-input100 validate-input mb-3">
                 <input
                   className="input100"
                   type="text"
-                  name="name"
+                  name="userName"
                   placeholder="Nombre"
+                  value={form.userName}
+                  onChange={handleInputChange}
                 />
                 <span className="focus-input100"></span>
               </div>
@@ -29,6 +65,8 @@ const Register = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
+                  value={form.email}
+                  onChange={handleInputChange}
                 />
                 <span className="focus-input100"></span>
               </div>
@@ -39,6 +77,8 @@ const Register = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  value={form.password}
+                  onChange={handleInputChange}
                 />
                 <span className="focus-input100"></span>
               </div>
@@ -52,7 +92,9 @@ const Register = () => {
               </div>
 
               <div className="container-login100-form-btn m-t-17">
-                <button className="login100-form-btn">Crear cuenta</button>
+                <button className="login100-form-btn" disabled={!allReady()}>
+                  Crear cuenta
+                </button>
               </div>
             </form>
           </div>

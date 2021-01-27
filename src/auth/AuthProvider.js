@@ -43,7 +43,38 @@ const AuthProvider = ({ children }) => {
     }
   };
   const logOut = () => {};
-  const register = (userName, email, password) => {};
+
+  const register = async (userName, email, password) => {
+    try {
+      const response = await fetchWithOutToken(
+        'auth/register',
+        { userName, email, password },
+        'POST'
+      );
+
+      console.log(response);
+      if (response.token) {
+        localStorage.setItem('tokenSluck', response.token);
+
+        const {
+          user: { uid, userName, email },
+        } = response;
+
+        setAuth({
+          uid: uid,
+          cheking: false,
+          logged: true,
+          name: userName,
+          email,
+        });
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const tokenValidator = useCallback(() => {}, []);
 
   return (
