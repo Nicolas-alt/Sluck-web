@@ -1,15 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Chat from '../screens/Chat';
 
 const ChatRoutes = () => {
   return (
-    <div>
-      <Switch>
-        <Route path="/" component={} />
-        <Route path="/" component={} />
-        <Route path="/" component={} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/user" component={Chat} />
+      <Redirect to="/user" />
+    </Switch>
   );
 };
 

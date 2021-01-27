@@ -1,15 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import App from '../screens/App';
-import sdaf from '../screens/sdaf';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import Chat from '../screens/Chat';
+import AuthRoutes from './AuthRoutes';
 
 const AppRoutes = () => {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={App} />
-          <Route exact path="/x" component={sdaf} />
+          <Route path="/auth" component={AuthRoutes} />
+          <Route exact path="/" component={Chat} />
+          <Redirect to="/" />
         </Switch>
       </div>
     </Router>
