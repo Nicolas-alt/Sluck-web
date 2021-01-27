@@ -15,12 +15,12 @@ const Login = () => {
   useEffect(() => {
     const rememberEmail = localStorage.getItem('emailSluck');
     if (rememberEmail) {
-      setForm({
+      setForm((form) => ({
         ...form,
         email: rememberEmail,
         remember: true,
         ok: false,
-      });
+      }));
     }
   }, []);
 
