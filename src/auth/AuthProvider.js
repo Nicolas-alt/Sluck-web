@@ -1,4 +1,5 @@
 import React, { useCallback, useState, createContext } from 'react';
+import { fetchWithOutToken } from '../helpers/fetchWithOutToken';
 
 export const AuthContext = createContext();
 
@@ -12,7 +13,18 @@ const initialState = {
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialState);
-  const login = (email, password) => {};
+  const login = async (email, password) => {
+    try {
+      const response = await fetchWithOutToken(
+        'auth/login',
+        { email, password },
+        'POST'
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const logOut = () => {};
   const register = (userName, email, password) => {};
   const tokenValidator = useCallback(() => {}, []);
