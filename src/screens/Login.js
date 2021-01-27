@@ -40,16 +40,18 @@ const Login = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const allReady = () => {
+    return form.password.length > 0 && form.email.length > 0 ? true : false;
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     form.remember
       ? localStorage.setItem('emailSluck', form.email)
       : localStorage.removeItem('emailSluck');
     const { email, password } = form;
-    login(email, password);
-    // if (form.password.length < 0 || form.email.length < 0) {
-    //}
+    const ok = await login(email, password);
   };
 
   return (
@@ -109,7 +111,7 @@ const Login = () => {
               </div>
 
               <div className="container-login100-form-btn m-t-17">
-                <button className="login100-form-btn" disabled={form.ok}>
+                <button className="login100-form-btn" disabled={!allReady()}>
                   Ingresar
                 </button>
               </div>

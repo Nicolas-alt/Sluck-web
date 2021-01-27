@@ -20,7 +20,24 @@ const AuthProvider = ({ children }) => {
         { email, password },
         'POST'
       );
-      console.log(response);
+
+      if (response.token) {
+        localStorage.setItem('tokenSluck', response.token);
+
+        const {
+          userDb: { uid, userName, email },
+        } = response;
+
+        setAuth({
+          uid: uid,
+          cheking: false,
+          logged: true,
+          name: userName,
+          email,
+        });
+        return true;
+      }
+      return false;
     } catch (error) {
       console.error(error);
     }
@@ -32,6 +49,7 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        auth,
         login,
         logOut,
         register,
