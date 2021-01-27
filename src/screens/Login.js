@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/mainForms.css';
 import { AuthContext } from '../auth/AuthProvider';
 import CustomHelmet from '../components/CustomHelmet';
+import '../assets/styles/mainForms.css';
 
 const Login = () => {
   const { login } = useContext(AuthContext);

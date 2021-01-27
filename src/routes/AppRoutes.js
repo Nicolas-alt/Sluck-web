@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import AuthProvider from '../auth/AuthProvider';
 import Chat from '../screens/Chat';
 import AuthRoutes from './AuthRoutes';
 
