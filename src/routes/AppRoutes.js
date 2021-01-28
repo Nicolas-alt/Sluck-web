@@ -9,10 +9,11 @@ import { AuthContext } from '../auth/AuthProvider';
 import Loader from '../components/Loader';
 import Chat from '../screens/Chat';
 import AuthRoutes from './AuthRoutes';
+import PrivateRoutes from './PrivateRoute';
+import PublicRoutes from './PublicRoutes';
 
 const AppRoutes = () => {
   const { auth, tokenValidator } = useContext(AuthContext);
-
   useEffect(() => {
     tokenValidator();
   }, [tokenValidator]);
@@ -25,8 +26,16 @@ const AppRoutes = () => {
     <Router>
       <div>
         <Switch>
-          <Route path="/auth" component={AuthRoutes} />
-          <Route exact path="/" component={Chat} />
+          <PublicRoutes
+            isAuthenticated={auth.logged}
+            path="/auth"
+            component={AuthRoutes}
+          />
+          <PrivateRoutes
+            isAuthenticated={auth.logged}
+            path="/"
+            component={Chat}
+          />
           <Redirect to="/" />
         </Switch>
       </div>

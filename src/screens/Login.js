@@ -7,8 +7,8 @@ import '../assets/styles/mainForms.css';
 const Login = () => {
   const { login } = useContext(AuthContext);
   const [form, setForm] = useState({
-    email: 'test6@gmail.com',
-    password: 'test',
+    email: '',
+    password: '',
     remember: false,
   });
 

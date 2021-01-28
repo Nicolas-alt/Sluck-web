@@ -8,9 +8,9 @@ const Register = () => {
   const { register } = useContext(AuthContext);
 
   const [form, setForm] = useState({
-    userName: 'Federico',
-    email: 'test7@gmail.com',
-    password: 'test',
+    userName: '',
+    email: '',
+    password: '',
   });
 
   const handleInputChange = ({ target }) => {

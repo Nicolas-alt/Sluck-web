@@ -43,7 +43,14 @@ const AuthProvider = ({ children }) => {
       console.error(error);
     }
   };
-  const logOut = () => {};
+
+  const logOut = () => {
+    localStorage.removeItem('tokenSluck');
+    setAuth({
+      cheking: false,
+      logged: false,
+    });
+  };
 
   const register = async (userName, email, password) => {
     try {
