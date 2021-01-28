@@ -1,10 +1,15 @@
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const fetchWithOutToken = async (endpoint, data, method = 'GET') => {
+export const fetchWithToken = async (endpoint, data, method = 'GET') => {
   const urlFetch = `${baseUrl}/${endpoint}`;
+  const token = localStorage.getItem('tokenSluck') || '';
   if (method === 'GET') {
     try {
-      const response = await fetch(urlFetch);
+      const response = await fetch(urlFetch, {
+        headers: {
+          Authorization: token,
+        },
+      });
       return await response.json();
     } catch (error) {
       console.error(error);
@@ -15,12 +20,14 @@ export const fetchWithOutToken = async (endpoint, data, method = 'GET') => {
         method,
         headers: {
           'Content-type': 'application/json',
+          Authorization: token,
         },
         body: JSON.stringify(data),
       });
+
       return await response.json();
     } catch (error) {
-      console.error('asdf', error);
+      console.error(error);
     }
   }
 };

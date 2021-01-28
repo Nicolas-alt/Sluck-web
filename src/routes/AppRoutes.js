@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthProvider';
+import Loader from '../components/Loader';
 import Chat from '../screens/Chat';
 import AuthRoutes from './AuthRoutes';
 
 const AppRoutes = () => {
+  const { auth, tokenValidator } = useContext(AuthContext);
+
+  useEffect(() => {
+    tokenValidator();
+  }, [tokenValidator]);
+
+  if (auth.cheking) {
+    return <Loader />;
+  }
+
   return (
     <Router>
       <div>
