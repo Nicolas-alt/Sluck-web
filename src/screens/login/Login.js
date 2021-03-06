@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/mainForms.css';
-import CustomHelmet from '../components/CustomHelmet';
+import '../../assets/styles/mainForms.css';
+import CustomHelmet from '../../components/CustomHelmet';
 
 const Login = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Login from '../screens/Login';
+import Login from '../screens/login/Login';
 import Register from '../screens/register/Register';
 
 const AuthRoutes = () => {
