@@ -6,8 +6,6 @@ const SideBar = () => {
     <>
       <div className="inbox_chat">
         <SideBarChatInfo />
-        {/* <!-- Espacio extra para scroll --> */}
-        <div className="extra_space"></div>
       </div>
     </>
   );

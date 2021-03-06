@@ -12,14 +12,12 @@ import AuthRoutes from './AuthRoutes';
 const AppRoutes = () => {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route path="/auth" component={AuthRoutes} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/" component={Chat} />
-          <Redirect to="/" />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/auth" component={AuthRoutes} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Chat} />
+        <Redirect to="/" />
+      </Switch>
     </Router>
   );
 };
