@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Chat from '../screens/Chat';
+import Home from '../screens/Home';
 import AuthRoutes from './AuthRoutes';
 
 const AppRoutes = () => {
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <div>
         <Switch>
           <Route path="/auth" component={AuthRoutes} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/" component={Chat} />
           <Redirect to="/" />
         </Switch>
