@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/mainForms.css';
-import CustomHelmet from '../components/CustomHelmet';
+import CustomHelmet from '../../components/CustomHelmet';
 
 const Register = () => {
   return (

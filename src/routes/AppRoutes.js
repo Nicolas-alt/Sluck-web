@@ -5,8 +5,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Chat from '../screens/Chat';
-import Home from '../screens/Home';
+import Chat from '../screens/chat/Chat';
+import Home from '../screens/home/Home';
 import AuthRoutes from './AuthRoutes';
 
 const AppRoutes = () => {
