@@ -1,8 +1,8 @@
 import React from 'react';
-import './Chat.scss';
 import CustomHelmet from '../../components/CustomHelmet';
 import InboxPeople from '../../components/InboxPeople';
 import MessageScreen from '../../components/messages/MessageScreen';
+import './Chat.scss';
 
 const Chat = () => {
   return (
